@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập 31 - Tính tích số chia hết cho 7</title>
+</head>
+<body>
+
+    <h2>TÍNH TÍCH CÁC SỐ CHIA HẾT CHO 7</h2>
+
+    <form onsubmit="handleSubmit(event)">
+
+        <label>Nhập số đầu:</label>
+        <input type="number" id="start" required>
+
+        <br><br>
+
+        <label>Nhập số cuối:</label>
+        <input type="number" id="end" required>
+
+        <br><br>
+
+        <button type="submit">Tính kết quả</button>
+
+    </form>
+
+    <h3 id="result">Kết quả sẽ hiển thị ở đây</h3>
+
+    <script>
+        function handleSubmit(event) {
+
+            event.preventDefault();
+
+            const start = Number(document.getElementById("start").value);
+            const end = Number(document.getElementById("end").value);
+
+            let tich = 1;
+            let dem = 0;
+
+            if (start > end) {
+                document.getElementById("result").innerHTML =
+                    "Số đầu phải nhỏ hơn hoặc bằng số cuối!";
+                return;
+            }
+
+            for (let i = start; i <= end; i++) {
+
+                if (i % 7 === 0) {
+                    tich = tich * i;
+                    dem++;
+                }
+
+            }
+
+            if (dem === 0) {
+                document.getElementById("result").innerHTML =
+                    "Không có số nào chia hết cho 7!";
+            } else {
+                document.getElementById("result").innerHTML =
+                    "Tích các số chia hết cho 7 là: " + tich;
+            }
+        }
+    </script>
+
+</body>
+</html>
